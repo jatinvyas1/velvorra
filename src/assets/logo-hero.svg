@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Velvorra">
+  <defs>
+    <linearGradient id="vBlue" x1="32" y1="54" x2="32" y2="8" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#081838"/>
+      <stop offset="0.45" stop-color="#0f2d66"/>
+      <stop offset="1" stop-color="#2b73c4"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="13" fill="#1a2530"/>
+  <path d="M6 9 L32 55 L58 9 L50 9 L32 46 L14 9 Z" fill="url(#vBlue)"/>
+  <circle cx="32" cy="23.5" r="10.5" fill="#ffffff"/>
+  <circle cx="32" cy="23.5" r="9.8" fill="none" stroke="#0c224f" stroke-width="1"/>
+  <ellipse cx="32" cy="23.5" rx="9.8" ry="3.8" fill="none" stroke="#0c224f" stroke-width="0.7"/>
+  <ellipse cx="32" cy="23.5" rx="3.8" ry="9.8" fill="none" stroke="#0c224f" stroke-width="0.7"/>
+  <path d="M22.2 23.5 H41.8" stroke="#0c224f" stroke-width="0.7"/>
+  <path
+    d="M16.5 29.5 C16.5 37.5 22.5 41.5 32 41.5 C39 41.5 43.5 38.5 45.5 34.5"
+    fill="none"
+    stroke="#0c224f"
+    stroke-width="2.15"
+    stroke-linecap="round"
+  />
+  <path
+    d="M41.5 32.5 L45.5 34.5 L43.8 38.2"
+    fill="none"
+    stroke="#0c224f"
+    stroke-width="2.15"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>

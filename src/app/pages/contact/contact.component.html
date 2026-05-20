@@ -1,0 +1,193 @@
+<!-- Hero -->
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow" appReveal>Contact</span>
+    <h1 appReveal [revealDelay]="1" class="text-balance">
+      Let’s start a <em>conversation.</em>
+    </h1>
+    <p appReveal [revealDelay]="2" class="lede">
+      Inquiries, sample requests, contracted volumes or just a chat about the markets —
+      we read every message and reply within one business day.
+    </p>
+  </div>
+</section>
+
+<!-- Contact grid -->
+<section class="contact-grid container">
+  <!-- Form side -->
+  <div class="form-side" appReveal>
+    @if (!submitted()) {
+      <h2>Send us a message</h2>
+      <p class="form-intro">All fields marked with * are required.</p>
+
+      <form [formGroup]="form" (ngSubmit)="submit()" class="form">
+        <input
+          type="text"
+          name="_honey"
+          tabindex="-1"
+          autocomplete="off"
+          class="hp-field"
+          aria-hidden="true"
+        />
+
+        @if (sendError()) {
+          <p class="form-error" role="alert">
+            {{ sendError() }}
+            <a [href]="'mailto:' + contactEmail">{{ contactEmail }}</a>
+          </p>
+        }
+
+        <div class="row two">
+          <label class="field">
+            <span>Your name *</span>
+            <input type="text" formControlName="name" autocomplete="name" />
+            @if (isInvalid('name')) {
+              <small class="err">Please enter your name.</small>
+            }
+          </label>
+          <label class="field">
+            <span>Company</span>
+            <input type="text" formControlName="company" autocomplete="organization" />
+          </label>
+        </div>
+
+        <div class="row two">
+          <label class="field">
+            <span>Email *</span>
+            <input type="email" formControlName="email" autocomplete="email" />
+            @if (isInvalid('email')) {
+              <small class="err">Enter a valid email.</small>
+            }
+          </label>
+          <label class="field">
+            <span>Phone</span>
+            <input type="tel" formControlName="phone" autocomplete="tel" />
+          </label>
+        </div>
+
+        <div class="row two">
+          <label class="field">
+            <span>Country *</span>
+            <input type="text" formControlName="country" placeholder="e.g. UAE, Vietnam, Germany" />
+            @if (isInvalid('country')) {
+              <small class="err">Where are you based?</small>
+            }
+          </label>
+          <label class="field">
+            <span>Product of interest *</span>
+            <select formControlName="product">
+              <option value="" disabled>Select a commodity</option>
+              @for (p of products; track p.slug) {
+                <option [value]="p.name">{{ p.name }}</option>
+              }
+              <option value="Multiple / Other">Multiple / Other</option>
+            </select>
+            @if (isInvalid('product')) {
+              <small class="err">Pick a commodity.</small>
+            }
+          </label>
+        </div>
+
+        <label class="field">
+          <span>Indicative volume / packaging</span>
+          <input type="text" formControlName="volume" placeholder="e.g. 1×40' FCL · 50 kg bags" />
+        </label>
+
+        <label class="field">
+          <span>Your message *</span>
+          <textarea rows="5" formControlName="message"
+            placeholder="Tell us about your requirement — grade, destination port, target price, Incoterm…"></textarea>
+          @if (isInvalid('message')) {
+            <small class="err">A short message helps us respond accurately.</small>
+          }
+        </label>
+
+        <button
+          type="submit"
+          class="btn btn-primary submit-btn"
+          [disabled]="sending()"
+        >
+          @if (sending()) {
+            Sending…
+          } @else {
+            Send inquiry <span class="arrow">→</span>
+          }
+        </button>
+      </form>
+    } @else {
+      <div class="success-card" role="status">
+        <div class="success-mark">
+          <svg viewBox="0 0 64 64" width="56" height="56" fill="none" stroke="currentColor"
+               stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="32" cy="32" r="28"/>
+            <path d="M20 33l8 8 16-18"/>
+          </svg>
+        </div>
+        <h2>Thank you.</h2>
+        <p>
+          Your message has reached the Velvorra trade desk. We typically respond within
+          one business day with indicative pricing and next steps.
+        </p>
+        <button class="btn btn-ghost" type="button" (click)="resetForm()">
+          Send another inquiry
+        </button>
+      </div>
+    }
+  </div>
+
+  <!-- Info side -->
+  <aside class="info-side" appReveal [revealDelay]="1">
+    <div class="info-card primary">
+      <span class="info-eyebrow">Trade desk</span>
+      <a [href]="'mailto:' + contactEmail" class="info-strong">
+        {{ contactEmail }}
+      </a>
+      <a href="tel:+917746006410" class="info-strong">+91 77460 06410</a>
+      <p>For inquiries, samples, contract negotiation and post-shipment support.</p>
+    </div>
+
+    <div class="info-card">
+      <span class="info-eyebrow">Visit us</span>
+      <address>
+        Velvorra International<br />
+        158, Ralamandal,<br />
+        Kasturbagram,<br />
+        Indore 452020,<br />
+        Madhya Pradesh, India
+      </address>
+      <a class="map-link"
+         href="https://maps.google.com/?q=Ralamandal,Kasturbagram,Indore"
+         target="_blank" rel="noopener">
+        Open in Google Maps →
+      </a>
+    </div>
+
+    <div class="info-card hours">
+      <span class="info-eyebrow">Hours</span>
+      <div class="hour-row"><span>Mon — Fri</span><strong>09:00 — 19:00 IST</strong></div>
+      <div class="hour-row"><span>Saturday</span><strong>10:00 — 16:00 IST</strong></div>
+      <div class="hour-row"><span>Sunday</span><strong>Closed</strong></div>
+    </div>
+  </aside>
+</section>
+
+<!-- Map -->
+<section class="map-section">
+  <div class="container">
+    <div class="map-wrap" appReveal>
+      <iframe
+        title="Velvorra International location"
+        src="https://maps.google.com/maps?q=Ralamandal%2C%20Kasturbagram%2C%20Indore%20452020&z=14&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+      <div class="map-pin">
+        <div class="pin-dot"></div>
+        <div>
+          <strong>Velvorra International</strong>
+          <span>Indore · Madhya Pradesh</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

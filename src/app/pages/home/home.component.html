@@ -1,0 +1,485 @@
+<!-- ============== HERO ============== -->
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <svg class="hero-video-filter" aria-hidden="true" focusable="false">
+      <defs>
+        <filter id="hero-video-sharpen" color-interpolation-filters="sRGB">
+          <feConvolveMatrix
+            order="3"
+            kernelMatrix="0 -0.6 0 -0.6 3.4 -0.6 0 -0.6 0"
+          />
+        </filter>
+      </defs>
+    </svg>
+    <video
+      #heroVideo
+      class="hero-video"
+      autoplay
+      muted
+      [muted]="true"
+      loop
+      playsinline
+      preload="auto"
+      disablePictureInPicture
+      (canplay)="forcePlay(heroVideo)"
+      (loadeddata)="forcePlay(heroVideo)"
+    >
+      <!-- Local file: Cargo ship with colorful containers at sea -->
+      <source src="assets/hero-bg.mp4" type="video/mp4" />
+      <!-- CDN fallback: https://www.pexels.com/video/large-cargo-ship-with-colorful-containers-at-sea-36233044/ -->
+      <source
+        src="https://videos.pexels.com/video-files/36233044/15365645_1920_1080_25fps.mp4"
+        type="video/mp4"
+      />
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow" appReveal>Global Trade · Export Solutions</span>
+
+      <h1 appReveal [revealDelay]="1" class="hero-title text-balance">
+        Connecting <em>India</em><br />
+        to global<br />
+        <span class="ink">markets.</span>
+      </h1>
+
+      <p appReveal [revealDelay]="2" class="lede hero-lede">
+        Velvorra International is a trusted global trading and export company —
+        sourcing, quality-assuring and shipping premium Indian commodities to
+        <strong>50+ countries</strong>. From farm to port to your warehouse.
+      </p>
+
+      <div appReveal [revealDelay]="3" class="hero-ctas">
+        <a routerLink="/products" class="btn btn-primary">
+          Explore products <span class="arrow">→</span>
+        </a>
+        <a routerLink="/contact" class="btn btn-ghost">
+          Talk to our trade desk
+        </a>
+      </div>
+
+      <div appReveal [revealDelay]="4" class="hero-meta">
+        <div class="meta-item">
+          <span class="dot"></span> Indore · Madhya Pradesh · India
+        </div>
+        <div class="meta-item">
+          <a href="tel:+917746006410">+91 77460 06410</a>
+          <span>·</span>
+          <a href="tel:+919805020124">+91 98050 20124</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Marquee ticker -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>Basmati Rice</span><span>•</span>
+      <span>Green Chilli G4</span><span>•</span>
+      <span>Banana G9</span><span>•</span>
+      <span>Kabuli Chana</span><span>•</span>
+      <span>Pigeon Peas</span><span>•</span>
+      <span>Turmeric</span><span>•</span>
+      <span>Red Chilli</span><span>•</span>
+      <span>Coriander</span><span>•</span>
+      <span>Cumin</span><span>•</span>
+      <span>Ginger</span><span>•</span>
+      <span>Refined Sugar</span><span>•</span>
+      <span>Palm Oil</span><span>•</span>
+      <span>Onion Powder</span><span>•</span>
+      <span>Garlic Powder</span><span>•</span>
+      <span>Beetroot Powder</span><span>•</span>
+      <span>Basmati Rice</span><span>•</span>
+      <span>Green Chilli G4</span><span>•</span>
+      <span>Banana G9</span><span>•</span>
+      <span>Kabuli Chana</span><span>•</span>
+      <span>Turmeric</span><span>•</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============== VALUE BADGES STRIP ============== -->
+<section class="badge-strip">
+  <div class="container badge-grid">
+    @for (b of valueBadges; track b.title; let i = $index) {
+      <div class="badge" appReveal [revealDelay]="(i % 3) + 1">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor"
+             stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12l5 5L20 7"/>
+        </svg>
+        <div>
+          <strong>{{ b.title }}</strong>
+          <span>{{ b.body }}</span>
+        </div>
+      </div>
+    }
+  </div>
+</section>
+
+<!-- ============== STATS ============== -->
+<section class="stats section">
+  <div class="container">
+    <div class="stats-grid">
+      @for (s of stats; track s.label; let i = $index) {
+        <div class="stat" appReveal [revealDelay]="i + 1">
+          <div class="stat-value">{{ s.value }}</div>
+          <div class="stat-label">{{ s.label }}</div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ============== WHAT WE OFFER ============== -->
+<section class="services section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" appReveal>What we offer</span>
+      <h2 appReveal [revealDelay]="1" class="text-balance">
+        Everything from <em>inquiry to dispatch</em> — under one roof.
+      </h2>
+      <p appReveal [revealDelay]="2" class="lede">
+        Five services that wrap around every shipment. Choose one, choose all — we’re
+        accountable for the outcome either way.
+      </p>
+    </div>
+
+    <div class="services-grid">
+      @for (s of services; track s.title; let i = $index) {
+        <article class="service-card" appReveal [revealDelay]="(i % 3) + 1">
+          <div class="service-photo" aria-hidden="true">
+            <img [src]="s.image" alt="" loading="lazy" decoding="async" />
+          </div>
+          <div class="service-num">0{{ i + 1 }}</div>
+          <div class="service-icon"><app-icon [name]="s.icon" [size]="30" /></div>
+          <h3>{{ s.title }}</h3>
+          <p>{{ s.body }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ============== CAPABILITIES ============== -->
+<section class="capabilities section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" appReveal>Why Velvorra</span>
+      <h2 appReveal [revealDelay]="1" class="text-balance">
+        Built for traders who can’t afford <em>surprises.</em>
+      </h2>
+      <p appReveal [revealDelay]="2" class="lede">
+        From the first inquiry to delivery at destination, we own the chain — sourcing,
+        quality, paperwork and logistics — so you don’t have to.
+      </p>
+    </div>
+
+    <div class="caps-grid">
+      @for (c of capabilities; track c.title; let i = $index) {
+        <article class="cap-card" appReveal [revealDelay]="i + 1">
+          <div class="cap-icon"><app-icon [name]="c.icon" [size]="32" /></div>
+          <h3>{{ c.title }}</h3>
+          <p>{{ c.body }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ============== FEATURED PRODUCTS ============== -->
+<section class="featured section">
+  <div class="container">
+    <div class="section-head with-cta">
+      <div>
+        <span class="eyebrow" appReveal>Our range</span>
+        <h2 appReveal [revealDelay]="1" class="text-balance">
+          Fresh produce, pulses, rice,<br />
+          <em>spices &amp; food ingredients.</em>
+        </h2>
+      </div>
+      <a routerLink="/products" class="btn btn-ghost" appReveal [revealDelay]="2">
+        View full catalogue <span class="arrow">→</span>
+      </a>
+    </div>
+
+    <div class="products-grid">
+      @for (p of featured; track p.slug; let i = $index) {
+        <a [routerLink]="['/products']" [fragment]="p.slug"
+           class="product-card" appReveal [revealDelay]="(i % 4) + 1">
+          <div class="pc-image" [style.--accent]="p.accent">
+            <div class="pc-image-fallback">
+              <app-icon [name]="p.icon" [size]="64" color="currentColor" />
+            </div>
+            <img
+              [src]="p.image"
+              [alt]="p.name"
+              loading="lazy"
+              decoding="async"
+              (error)="$any($event.target).style.display = 'none'"
+            />
+            <span class="pc-tag">{{ p.category }}</span>
+          </div>
+          <div class="pc-body">
+            <h3>{{ p.name }}</h3>
+            <p>{{ p.tagline }}</p>
+            <span class="pc-link">Details <span class="arrow">→</span></span>
+          </div>
+        </a>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ============== CERTIFICATIONS ============== -->
+<section class="certs section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" appReveal>Achievement certificates</span>
+      <h2 appReveal [revealDelay]="1" class="text-balance">
+        Compliant, audited,<br />
+        <em>internationally recognised.</em>
+      </h2>
+      <p appReveal [revealDelay]="2" class="lede">
+        Our registrations and certifications reflect a permanent commitment to quality,
+        traceability and professional standards in international agro trade.
+      </p>
+    </div>
+
+    <div class="certs-grid">
+      @for (c of certifications; track c.abbr; let i = $index) {
+        <div class="cert-card" appReveal [revealDelay]="i + 1">
+          <div class="cert-seal">
+            <img
+              [src]="c.image"
+              [alt]="c.name + ' certification'"
+              loading="lazy"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"
+            />
+            <div class="cert-seal-fallback" aria-hidden="true">
+              <svg viewBox="0 0 100 100" width="76" height="76">
+                <defs>
+                  <linearGradient [attr.id]="'certG' + i" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#d4a24c"/>
+                    <stop offset="1" stop-color="#a87a2c"/>
+                  </linearGradient>
+                </defs>
+                <g [attr.fill]="'url(#certG' + i + ')'">
+                  <path d="M50 4 L57 12 L67 9 L70 19 L80 21 L78 32 L86 39 L80 47 L84 57 L74 60 L72 70 L62 68 L57 77 L50 73 L43 77 L38 68 L28 70 L26 60 L16 57 L20 47 L14 39 L22 32 L20 21 L30 19 L33 9 L43 12 Z"/>
+                </g>
+                <circle cx="50" cy="50" r="26" fill="#0a3c2c"/>
+                <text x="50" y="55" text-anchor="middle" fill="#d4a24c"
+                      font-family="Inter, sans-serif" font-size="13" font-weight="700"
+                      letter-spacing="0.05em">{{ c.abbr }}</text>
+              </svg>
+            </div>
+          </div>
+          <h3>{{ c.name }}</h3>
+          <p>{{ c.body }}</p>
+        </div>
+      }
+    </div>
+
+    <div class="certs-marquee" aria-hidden="true">
+      <div class="cm-track">
+        <span>APEDA Registered Exporter</span><span>★</span>
+        <span>FSSAI Compliant</span><span>★</span>
+        <span>Spices Board India</span><span>★</span>
+        <span>SGS Certified</span><span>★</span>
+        <span>ISO 9001 Quality Systems</span><span>★</span>
+        <span>ISO-aligned quality systems</span><span>★</span>
+        <span>APEDA Registered Exporter</span><span>★</span>
+        <span>FSSAI Compliant</span><span>★</span>
+        <span>Spices Board India</span><span>★</span>
+        <span>SGS Certified</span><span>★</span>
+        <span>ISO 9001 Quality Systems</span><span>★</span>
+        <span>ISO-aligned quality systems</span><span>★</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== WAREHOUSING & COLD CHAIN ============== -->
+<section class="warehouse section">
+  <div class="container warehouse-grid">
+    <div class="wh-copy" appReveal>
+      <span class="eyebrow">Warehousing · Cold chain</span>
+      <h2 class="text-balance">
+        Stored with precision.<br />Shipped on time, <em>every time.</em>
+      </h2>
+      <p class="lede">
+        Our warehousing and cold-chain operations are designed for safe storage,
+        efficient inventory handling and timely global dispatch — preserving product
+        quality from field to vessel.
+      </p>
+      <ul class="wh-points">
+        <li>
+          <span class="wp-num">01</span>
+          <div>
+            <strong>Organised storage systems</strong>
+            <p>Streamlined inventory, batch traceability and FIFO handling.</p>
+          </div>
+        </li>
+        <li>
+          <span class="wp-num">02</span>
+          <div>
+            <strong>Cold-chain for green chilli</strong>
+            <p>Temperature-controlled storage and reefer logistics — colour, texture and shelf life preserved through transit.</p>
+          </div>
+        </li>
+        <li>
+          <span class="wp-num">03</span>
+          <div>
+            <strong>International compliance</strong>
+            <p>Every shipment handled with the documentation and care international buyers expect.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="wh-visual" appReveal [revealDelay]="2">
+      <div class="wh-card wh-card-1">
+        <div class="wh-card-icon"><app-icon name="truck" [size]="34" /></div>
+        <div>
+          <small>Ocean · Air · Land</small>
+          <strong>Door-to-door</strong>
+        </div>
+      </div>
+      <div class="wh-card wh-card-2">
+        <div class="wh-card-icon"><app-icon name="shield" [size]="34" /></div>
+        <div>
+          <small>SGS / Geo-Chem</small>
+          <strong>Pre-shipment QC</strong>
+        </div>
+      </div>
+      <div class="wh-card wh-card-3">
+        <div class="wh-card-icon"><app-icon name="ship" [size]="34" /></div>
+        <div>
+          <small>Reefer · Flexitank</small>
+          <strong>Container loading</strong>
+        </div>
+      </div>
+      <div class="wh-bg-grad"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== VELVORRA WAREHOUSE GALLERY ============== -->
+<section class="warehouse-gallery section" aria-label="Velvorra warehouse facilities">
+  <div class="container">
+    <div class="wg-head" appReveal>
+      <span class="eyebrow">Velvorra Warehouse</span>
+      <h2 class="text-balance">
+        Real infrastructure in Indore for <em>export-grade</em> storage.
+      </h2>
+      <p class="lede">
+        Godowns, cold-chain rooms and processing units at Indore & Ralamandal, MP —
+        with our teams handling export-grade agro commodities from storage to dispatch.
+      </p>
+    </div>
+
+    <div
+      class="wg-carousel"
+      appReveal
+      [revealDelay]="1"
+      (mouseenter)="pauseWarehouseAutoplay()"
+      (mouseleave)="resumeWarehouseAutoplay()"
+    >
+      <div class="wg-viewport">
+        @for (slide of warehouseSlides; track slide.photoPath; let i = $index) {
+          <figure
+            class="wg-slide"
+            [class.is-active]="i === currentWarehouseSlide"
+            [attr.aria-hidden]="i !== currentWarehouseSlide"
+          >
+            <img
+              [src]="warehousePhotoUrl(slide.photoPath, 1920)"
+              [attr.srcset]="warehousePhotoSrcset(slide.photoPath) || null"
+              sizes="(max-width: 768px) 100vw, (max-width: 1400px) 92vw, 1280px"
+              [alt]="slide.alt"
+              loading="eager"
+              decoding="async"
+            />
+            <figcaption class="wg-caption">
+              <span class="wg-caption-num">{{ (i + 1).toString().padStart(2, '0') }}</span>
+              {{ slide.caption }}
+            </figcaption>
+          </figure>
+        }
+      </div>
+
+      <button
+        type="button"
+        class="wg-nav wg-prev"
+        aria-label="Previous warehouse image"
+        (click)="prevWarehouseSlide()"
+      >
+        <span aria-hidden="true">‹</span>
+      </button>
+      <button
+        type="button"
+        class="wg-nav wg-next"
+        aria-label="Next warehouse image"
+        (click)="nextWarehouseSlide()"
+      >
+        <span aria-hidden="true">›</span>
+      </button>
+
+      <div class="wg-dots" role="tablist" aria-label="Warehouse gallery slides">
+        @for (slide of warehouseSlides; track slide.photoPath; let i = $index) {
+          <button
+            type="button"
+            role="tab"
+            class="wg-dot"
+            [class.is-active]="i === currentWarehouseSlide"
+            [attr.aria-selected]="i === currentWarehouseSlide"
+            [attr.aria-label]="'Show slide ' + (i + 1) + ': ' + slide.caption"
+            (click)="goToWarehouseSlide(i)"
+          ></button>
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== PROCESS ============== -->
+<section class="process section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" appReveal>How we trade</span>
+      <h2 appReveal [revealDelay]="1" class="text-balance">
+        A simple, repeatable, <em>transparent</em> process.
+      </h2>
+    </div>
+
+    <ol class="process-grid">
+      @for (s of process; track s.step; let i = $index) {
+        <li class="process-card" appReveal [revealDelay]="i + 1">
+          <span class="process-step">{{ s.step }}</span>
+          <h3>{{ s.title }}</h3>
+          <p>{{ s.body }}</p>
+        </li>
+      }
+    </ol>
+  </div>
+</section>
+
+<!-- ============== CTA ============== -->
+<section class="cta-band">
+  <div class="container cta-inner">
+    <div class="cta-text" appReveal>
+      <span class="eyebrow light">Ready to ship?</span>
+      <h2 class="text-balance">
+        Tell us what you need.<br />We’ll quote within <em>24 hours.</em>
+      </h2>
+    </div>
+    <a routerLink="/contact" class="btn btn-gold" appReveal [revealDelay]="1">
+      Request a quote <span class="arrow">→</span>
+    </a>
+  </div>
+</section>

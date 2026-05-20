@@ -1,0 +1,95 @@
+<!-- Hero -->
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow" appReveal>Our complete range</span>
+    <h1 appReveal [revealDelay]="1" class="text-balance">
+      Fresh produce. Pulses. Rice.<br />
+      <em>Spices. Ingredients. Sugar &amp; oil.</em>
+    </h1>
+    <p appReveal [revealDelay]="2" class="lede">
+      Six commodity verticals, 30+ SKUs, one trusted desk — every product sourced
+      directly from origin, inspected against international standards and shipped under
+      our own quality and documentation system.
+    </p>
+
+    <div class="filters" appReveal [revealDelay]="3" role="tablist">
+      @for (f of filters; track f) {
+        <button
+          type="button"
+          role="tab"
+          [class.is-active]="activeFilter() === f"
+          (click)="setFilter(f)"
+        >
+          {{ f }}
+          <span class="count">{{ counts()[f] }}</span>
+        </button>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Grid -->
+<section class="catalogue container">
+  <div class="grid">
+    @for (p of visible(); track p.slug; let i = $index) {
+      <article class="card" [id]="p.slug" appReveal [revealDelay]="(i % 4) + 1">
+        <div class="card-image" [style.--accent]="p.accent">
+          <div class="card-fallback">
+            <app-icon [name]="p.icon" [size]="72" color="currentColor" />
+          </div>
+          <img
+            [src]="p.image"
+            [alt]="p.name"
+            loading="lazy"
+            decoding="async"
+            (error)="$any($event.target).style.display = 'none'"
+          />
+          <span class="card-tag">{{ p.category }}</span>
+        </div>
+
+        <div class="card-body">
+          <h3>{{ p.name }}</h3>
+          <p class="card-tagline">{{ p.tagline }}</p>
+          <p class="card-desc">{{ p.description }}</p>
+
+          <ul class="card-highlights">
+            @for (h of p.highlights; track h) {
+              <li>
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor"
+                     stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12l5 5L20 7"/>
+                </svg>
+                {{ h }}
+              </li>
+            }
+          </ul>
+
+          <a routerLink="/contact" class="card-cta">
+            Request quote <span class="arrow">→</span>
+          </a>
+        </div>
+      </article>
+    }
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="bottom-cta">
+  <div class="container">
+    <div class="bottom-cta-card" appReveal>
+      <div>
+        <span class="eyebrow">Bulk inquiry</span>
+        <h2 class="text-balance">
+          Mixed-commodity container? <em>We do that too.</em>
+        </h2>
+        <p class="lede">
+          Consolidate multiple SKUs in one shipment with one set of documents — ideal for
+          distributors building a balanced inventory.
+        </p>
+      </div>
+      <a routerLink="/contact" class="btn btn-primary">
+        Start an inquiry <span class="arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>

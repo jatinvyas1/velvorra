@@ -1,0 +1,174 @@
+<!-- Hero -->
+<section class="page-hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow" appReveal>About Velvorra</span>
+      <h1 appReveal [revealDelay]="1" class="text-balance">
+        Quietly moving<br />
+        <em>India’s harvest</em><br />
+        to the world.
+      </h1>
+      <p appReveal [revealDelay]="2" class="lede">
+        Velvorra International is a trusted global trading and export company —
+        focused on sourcing, quality assurance, logistics management and seamless
+        international trade. We help businesses worldwide access premium Indian
+        products with reliability, transparency and excellence.
+      </p>
+    </div>
+
+    <div class="hero-card" appReveal [revealDelay]="2">
+      <div class="hc-row">
+        <span>Headquarters</span>
+        <strong>Indore, MP · India</strong>
+      </div>
+      <hr />
+      <div class="hc-row">
+        <span>Trade lanes</span>
+        <strong>50+ countries</strong>
+      </div>
+      <hr />
+      <div class="hc-row">
+        <span>Verticals</span>
+        <strong>6 categories · 30+ SKUs</strong>
+      </div>
+      <hr />
+      <div class="hc-row">
+        <span>Certified</span>
+        <strong>APEDA · FSSAI · SGS</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Story -->
+<section class="story section">
+  <div class="container story-grid">
+    <div class="story-side" appReveal>
+      <span class="eyebrow">Our story</span>
+      <h2 class="text-balance">A trade desk built<br /> for the long game.</h2>
+    </div>
+    <div class="story-body" appReveal [revealDelay]="1">
+      <p>
+        We started Velvorra International with a simple thesis: India sits at the centre
+        of a once-in-a-generation agro trade opportunity — surplus in some commodities,
+        deficit in others, with rising global demand for quality, traceability and
+        reliability.
+      </p>
+      <p>
+        Today we move <strong>fresh produce, pulses, rice, spices, food ingredients and
+        sugar &amp; oil</strong> from Indian origin to buyers across the Gulf, South-East
+        Asia, the EU, the CIS and beyond. Every shipment is sourced from verified
+        origins, inspected before loading and handled with full documentation through
+        delivery at destination.
+      </p>
+      <p>
+        It’s not glamorous work. It’s spreadsheets, port visits, midnight calls with
+        shipping lines, quality reports and contracts. But done well — consistently,
+        over years — it earns the only thing that really matters in this business: trust.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Range / lanes -->
+<section class="lanes section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" appReveal>What we trade</span>
+      <h2 appReveal [revealDelay]="1" class="text-balance">
+        Six categories. <em>One desk.</em>
+      </h2>
+      <p appReveal [revealDelay]="2" class="lede">
+        From fresh produce to powdered ingredients — sourced at origin, inspected
+        before loading and shipped under one accountable trade desk.
+      </p>
+    </div>
+
+    <div class="lanes-grid">
+      @for (l of lanes; track l.category; let i = $index) {
+        <div class="lane" appReveal [revealDelay]="(i % 3) + 1">
+          <span class="lane-badge">{{ l.category }}</span>
+          <ul>
+            @for (item of l.items; track item) {
+              <li>
+                <span class="bullet">→</span> {{ item }}
+              </li>
+            }
+          </ul>
+          <p class="lane-foot">{{ l.note }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Certifications -->
+<section class="about-certs section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" appReveal>Achievement certificates</span>
+      <h2 appReveal [revealDelay]="1" class="text-balance">
+        Our certifications reflect our <em>commitment.</em>
+      </h2>
+      <p appReveal [revealDelay]="2" class="lede">
+        Registrations, audits and compliance — the unglamorous infrastructure that
+        builds trust with international partners.
+      </p>
+    </div>
+
+    <div class="about-certs-grid">
+      @for (c of certs; track c.abbr; let i = $index) {
+        <div class="ac-card" appReveal [revealDelay]="i + 1">
+          <div class="ac-logo">
+            <img
+              [src]="c.image"
+              [alt]="c.name + ' certification'"
+              loading="lazy"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='inline-grid';"
+            />
+            <span class="ac-abbr" aria-hidden="true">{{ c.abbr }}</span>
+          </div>
+          <strong>{{ c.name }}</strong>
+          <p>{{ c.body }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Values -->
+<section class="values section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" appReveal>What we believe</span>
+      <h2 appReveal [revealDelay]="1" class="text-balance">
+        Four principles. Every shipment.
+      </h2>
+    </div>
+
+    <div class="values-grid">
+      @for (v of values; track v.title; let i = $index) {
+        <div class="value-card" appReveal [revealDelay]="i + 1">
+          <div class="vc-icon"><app-icon [name]="v.icon" [size]="32" /></div>
+          <h3>{{ v.title }}</h3>
+          <p>{{ v.body }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band">
+  <div class="container cta-inner">
+    <div appReveal>
+      <span class="eyebrow light">Let’s work together</span>
+      <h2 class="text-balance">
+        Have a requirement?<br /> Let’s <em>get it shipped.</em>
+      </h2>
+    </div>
+    <a routerLink="/contact" class="btn btn-gold" appReveal [revealDelay]="1">
+      Contact our desk <span class="arrow">→</span>
+    </a>
+  </div>
+</section>

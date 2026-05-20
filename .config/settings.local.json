@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:velvorrainternational.com)",
+      "Bash(dir \"C:\\\\Users\\\\User\\\\Desktop\\\\webSite\")",
+      "Bash(npm --version)",
+      "Bash(ng version *)",
+      "Bash(npm install *)",
+      "Bash(timeout 25 npx ng serve --port 4200 --host 127.0.0.1)",
+      "mcp__app_preview__start",
+      "Bash(npx ng *)",
+      "WebSearch",
+      "Bash(curl -sI -o /dev/null -w \"4253064: %{http_code}\\\\n\" https://videos.pexels.com/video-files/4253064/4253064-hd_1920_1080_25fps.mp4)",
+      "Bash(curl -sI -o /dev/null -w \"4253060: %{http_code}\\\\n\" https://videos.pexels.com/video-files/4253060/4253060-hd_1920_1080_25fps.mp4)",
+      "Bash(curl -sI -o /dev/null -w \"2098989: %{http_code}\\\\n\" https://videos.pexels.com/video-files/2098989/2098989-hd_1920_1080_30fps.mp4)",
+      "Bash(curl -sI -o /dev/null -w \"4763824: %{http_code}\\\\n\" https://videos.pexels.com/video-files/4763824/4763824-hd_1920_1080_24fps.mp4)",
+      "WebFetch(domain:www.pexels.com)",
+      "Bash(curl -L --fail -o \"src/assets/hero-bg.mp4\" \"https://videos.pexels.com/video-files/4902123/4902123-hd_1920_1080_30fps.mp4\")",
+      "Bash(curl -sI http://localhost:4200/assets/hero-bg.mp4)",
+      "Bash(curl -sI http://localhost:4200/assets/VELVORRA.jpg.jpeg)",
+      "Bash(command -v ffmpeg)",
+      "Bash(ffmpeg -ss 00:00:02 -i src/assets/hero-bg.mp4 -frames:v 1 -q:v 3 src/assets/hero-poster.jpg -y)",
+      "Bash(ffmpeg -version)",
+      "Bash(curl -sL --fail -o \"src/assets/hero-poster.jpg\" \"https://images.pexels.com/photos/4198015/pexels-photo-4198015.jpeg?auto=compress&cs=tinysrgb&w=1920\")",
+      "Bash(curl -sL --fail -o \"src/assets/hero-poster.jpg\" \"https://images.pexels.com/videos/4902123/pictures/preview-0.jpg\")",
+      "Bash(curl -sI -o /dev/null -w '%{http_code}' https://images.pexels.com/videos/4902123/pictures/preview-__TRACKED_VAR__.jpg)",
+      "Bash(curl -sL --fail -o \"src/assets/hero-poster.jpg\" \"https://images.pexels.com/videos/4902123/asian-herbs-herbs-and-spices-spices-4902123.jpeg?auto=compress&cs=tinysrgb&w=1920\")"
+    ]
+  }
+}
